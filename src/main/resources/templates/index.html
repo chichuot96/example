@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <form method="POST" th:action="@{/}" onsubmit="return validate()">
+        <label for="listNum">Enter 10 number</label>
+        <input type="text" name="number" id="listNum" th:value="${listNum}"/>
+        <input type="submit" value="caculate">
+    </form>
+    <div class="show" >
+        <div > Group A: <span th:utext="${groupA}"></span>
+        </div>
+        <div > Group B: <span th:utext="${groupB}"></span></div>
+        <div > Max value : <span th:utext="${value}"></span></div>
+    </div>
+
+</body>
+
+<script>
+    function validate(){
+        var listNum=$("#listNum").val();
+        var regex=/(-?\d+,){9}(-?\d+)/;
+        var numOfNumber=listNum.split(",");
+        if(!regex.test(listNum)||numOfNumber.length!=10){
+            alert("please enter 10 number split by ','");
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+</script>
+</html>
