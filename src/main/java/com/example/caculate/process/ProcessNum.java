@@ -5,7 +5,7 @@ public class ProcessNum {
         if(left<right){
             int p=partition(arrNum,left,right);
             sort(arrNum,left,p-1);
-            sort(arrNum,p,right);
+            sort(arrNum,p+1,right);
         }
 
     }
